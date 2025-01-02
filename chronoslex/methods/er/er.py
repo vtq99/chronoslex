@@ -12,18 +12,7 @@ from ..utils import prepare_data, forward_pass
 
 class ER(BaseTrainer):
     """
-    Averaged Gradient Episodic Memory (A-GEM)
-
-    Code adapted from https://github.com/aimagelab/mammoth.
-
-    Original Paper:
-
-        @article{chaudhry2018efficient,
-        title={Efficient lifelong learning with a-gem},
-        author={Chaudhry, Arslan and Ranzato, Marc'Aurelio and Rohrbach, Marcus and Elhoseiny, Mohamed},
-        journal={arXiv preprint arXiv:1812.00420},
-        year={2018}
-        }
+    Experience Replay (ER)
     """
     def __init__(self, args, dataset, network, criterion, optimizer, scheduler):
         super().__init__(args, dataset, network, criterion, optimizer, scheduler)

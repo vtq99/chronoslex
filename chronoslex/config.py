@@ -1,7 +1,7 @@
 
 config = {
-    'dataset': 'yearbook', # choices=['arxiv', 'drug', 'huffpost', 'mimic', 'fmow', 'yearbook']
-    'method': 'erm', # choices=['er', 'coral', 'ensemble', 'ewc', 'ft', 'groupdro', 'irm', 'si', 'erm', 'simclr', 'swav', 'swa']
+    'dataset': 'uklex18', # choices=['uklex18', 'uklex69', 'eurlex21', 'eurlex127', 'ecthr_a', 'ecthr_b']
+    'method': 'erm', # choices=['erm', 'ewc', 'er', 'agem', 'lora', 'adapter', 'coral', 'irm', 'groupdro']
     'device': 0,  # 'gpu id'
     'random_seed': 1,  # 'random seed number'
 
