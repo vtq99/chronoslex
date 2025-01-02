@@ -1,6 +1,6 @@
 config = {
-    'dataset': 'uklex69', # choices=['arxiv', 'drug', 'huffpost', 'mimic', 'fmow', 'yearbook']
-    'method': 'irm', # choices=['er', 'coral', 'ensemble', 'ewc', 'ft', 'groupdro', 'irm', 'si', 'erm', 'simclr', 'swav', 'swa']
+    'dataset': 'uklex69', # choices=['uklex18', 'uklex69', 'eurlex21', 'eurlex127', 'ecthr_a', 'ecthr_b']
+    'method': 'irm', # choices=['erm', 'ewc', 'er', 'agem', 'lora', 'adapter', 'coral', 'irm', 'groupdro']
     'device': 3,  # 'gpu id'
     'random_seed': 1,  # 'random seed number'
 
@@ -62,7 +62,7 @@ config = {
 from munch import DefaultMunch
 configs = DefaultMunch.fromDict(config)
 
-from wildtime import baseline_trainer
+from chronoslex import baseline_trainer
 # from original_wildtime import baseline_trainer
 # configs.dataset = 'huffpost'
 baseline_trainer.train(configs)
