@@ -34,7 +34,7 @@ Training hyperparameters also include
 ```'eval_freq'``` (validation frequency),
 ```'patience'``` for early stopping,
 and method-specific hyperparameters. 
-- Logging, saving, and testing destinations can be specified with ```'--data_dir'```, ```'--log_dir'``` and ```'--result_dir'```.
+- Logging, saving, and testing destinations can be specified with ```'data_dir'```, ```'log_dir'``` and ```'result_dir'```.
 
 ### Training
 To train a model with the defined configurations, use the code:
