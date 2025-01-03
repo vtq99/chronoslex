@@ -10,13 +10,45 @@ However, this incremental approach raises concerns about overfitting to recent d
 Our experimental results over six legal multi-label text classification datasets reveal that continual learning methods prove effective in preventing overfitting thereby enhancing temporal generalizability, while temporal invariant methods struggle to capture these dynamics of temporal shifts.
 
 # How to run
-TBD
+We deeply customized the code base of [WILDS](https://wilds.stanford.edu) and [WildTime](https://wild-time.github.io) to fit to our multi-label multi-class text classification tasks.
+We also included additional training stategies: ER, LoRA, Bottleneck Adpater on different models: BERT-LWAN, Hierachical BERT.
+
+### Configuration
+We use Munch to load the configurations from a dictionary.
+```
+from munch import DefaultMunch
+configs = DefaultMunch.fromDict(config)
+```
+Parameters in the dictionary ```config``` should include:
+- One of the ```'dataset'``` from choices ```['uklex18', 'uklex69', 'eurlex21', 'eurlex127', 'ecthr_a', 'ecthr_b']```
+- One of the ```'method'``` from choices ```['erm', 'ewc', 'er', 'agem', 'lora', 'adapter', 'coral', 'irm', 'groupdro']```.
+- To use Eval-Fix (our main focus), set ```'eval_fix': True```.
+```'split_time'``` specifies the split time step used for training and testing.
+- To use Eval-Stream, set ```'eval_next_timesteps'``` to define the number of future timesteps to evaluate on.
+- The number of training iterations is controlled by ```'train_update_iters'```.
+Training hyperparameters also include
+```'momentum'``` of Adam optimizer,
+```'weight_decay'```,
+```mini_batch_size'``` for SGD,
+```'reduction'``` of loss functions,
+```'eval_freq'``` (validation frequency),
+```'patience'``` for early stopping,
+and method-specific hyperparameters. 
+- Logging, saving, and testing destinations can be specified with ```'--data_dir'```, ```'--log_dir'``` and ```'--result_dir'```.
+
+### Training
+To train a model with the defined configurations, use the code:
+```
+from chronoslex import baseline_trainer
+baseline_trainer.train(configs)
+```
+To reproduce our results, please refer to Appendix A of our paper.
 
 # Benchmarking
-TBD
+(To-be-updated) In the meantime, please refer to Table 2 and 3, as well as Figure 2 and 3 in our paper.
 
 # Citation
-If you find the metric and this repo helpful, please consider cite:
+If you find the paper and this repository helpful, please cite:
 ```
 @inproceedings{t-y-s-s-etal-2024-chronoslex,
     title = "{C}hronos{L}ex: Time-aware Incremental Training for Temporal Generalization of Legal Classification Tasks",
